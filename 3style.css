@@ -1,0 +1,103 @@
+/* Обнуляем базовые отступы, чтобы меню работало корректно во всех браузерах */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Мягкий светлый фон для самого сайта */
+    padding: 20px;
+}
+
+/* Скрываем системный чекбокс */
+#sibebar {
+    display: none;
+}
+
+/* Стильная кнопка открытия меню */
+.open-button {
+    display: inline-block;
+    background: #fef08a; /* Мягкий, не бьющий в глаза желтый */
+    color: #1e3a8a;      /* Темно-синий цвет текста для идеального контраста */
+    padding: 12px 24px;
+    border-radius: 6px;  /* Легкое скругление углов */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Эффект при наведении на кнопку открытия */
+.open-button:hover {
+    background: #fde047; /* Чуть более насыщенный желтый */
+}
+
+/* Боковое меню (Сайдбар) */
+.sibebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;         /* Ровно на всю высоту экрана */
+    background: #1e3a8a;   /* Благородный королевский синий */
+    padding: 30px 25px;
+    
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out; /* Плавное и быстрое выдвижение (0.5s вместо 1.3s) */
+
+    /* Включаем Flexbox, чтобы растянуть элементы сверху донизу */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Выдвижение меню при клике */
+#sibebar:checked ~ .sibebar {
+    transform: translateX(0);
+}
+
+/* Кнопка закрытия внутри меню */
+.close-button {
+    color: #93c5fd;        /* Нежно-голубой цвет, чтобы кнопка не бросалась в глаза */
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 25px;   /* Отступ под кнопкой */
+    align-self: flex-start; /* Чтобы кнопка занимала место только по ширине текста */
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #ffffff;        /* Белая при наведении */
+}
+
+/* Заголовок меню */
+.sibebar h3 {
+    color: #ffffff;        /* Белый цвет */
+    font-size: 22px;
+    margin-bottom: 35px;   /* Отступ перед ссылками */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Тонкая эстетичная линия снизу */
+    padding-bottom: 10px;
+}
+
+/* Ссылки, растянутые по всей высоте */
+.sibebar a {
+    color: #ffffff;        /* Чистый белый текст, который отлично видно на синем */
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    
+    /* flex-grow заставляет ссылки поровну занять все оставшееся место по вертикали */
+    flex-grow: 1; 
+    
+    /* Центрируем текст ссылки по вертикали внутри её активной зоны */
+    display: flex;
+    align-items: center; 
+    
+    transition: padding-left 0.2s, color 0.2s;
+}
+
+/* Эффект при наведении на ссылки навигации */
+.sibebar a:hover {
+    color: #fef08a;        /* Текст подсвечивается желтым */
+    padding-left: 8px;     /* Ссылка изящно сдвигается вправо при наведении */
+}

@@ -1,0 +1,59 @@
+header {
+    background-color: rgb(255, 250, 95);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+nav a {
+    color: rgb(3, 3, 3);
+    text-decoration: none;
+    padding: 8px;
+}
+
+nav a:hover {
+    background: white;
+}
+
+.dropdown {
+    position: relative;
+}
+
+button {
+    background: yellow;
+    color: black;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: azure;
+    min-width: 150px;
+}
+
+.dropdown-content a {
+    display: block;
+
+    color: black;
+    padding: 10px;
+
+}
+
+.dropdown-content a:hover {
+    background-color: grey;
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}

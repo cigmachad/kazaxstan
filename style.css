@@ -1,0 +1,49 @@
+details {
+    display: flex;
+    justify-content: center;
+
+    background: rgb(236, 227, 227);
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px ;
+    border-radius: 5px;
+}
+
+/* 1. Скрываем стандартную стрелку браузера */
+summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding-left: 25px; /* Место слева под нашу картинку */
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 2. Добавляем картинку для закрытого состояния */
+summary::before {
+  content: ""; /* Оставляем пустым, так как используем background */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%); /* Центрируем по вертикали */
+  width: 16px;  /* Ширина картинки */
+  height: 16px; /* Высота картинки */
+  
+  /* Укажите URL вашей картинки или SVG-иконки ниже */
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVQ_TzpU8HFKpNrBy4Hu45W7jgRa1Y12RrQTfoMIiSLA&s=10');
+  background-size: contain;
+  background-repeat: no-repeat;
+  
+  transition: transform 0.2s ease; /* Плавный поворот */
+}
+
+/* 3. Меняем картинку (или просто поворачиваем её) при открытии */
+details[open] summary::before {
+  /* Вариант А: Если у вас одна картинка, её можно просто повернуть */
+  transform: translateY(-50%) rotate(90deg); 
+  
+  /* Вариант Б: Если для открытого состояния нужна ДРУГАЯ картинка, 
+     раскомментируйте строку ниже и закомментируйте свойство rotate */
+  /* background-image: url('https://example.com'); */
+}
